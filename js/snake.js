@@ -13,6 +13,7 @@ var yCor = [];
 var xFruit = 0;
 var yFruit = 0;
 var scoreElem;
+var r, g, b;
 
 function setup() {
   scoreElem = createDiv('Score = 0');
@@ -36,6 +37,7 @@ function draw() {
   background(0);
   for (var i = 0; i < numSegments - 1; i++) {
     line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1]);
+    stroke(r, g, b)
   }
   updateSnakeCoordinates();
   checkGameStatus();
@@ -136,6 +138,10 @@ function updateFruitCoordinates() {
 
   xFruit = floor(random(10, (width - 100) / 10)) * 10;
   yFruit = floor(random(10, (height - 100) / 10)) * 10;
+  stroke(255);
+  r = random(255);
+  g = random(255);
+  b = random(255);
 }
 
 function keyPressed() {
