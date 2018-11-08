@@ -132,8 +132,22 @@ function checkForFruit() {
     yCor.unshift(yCor[0]);
     numSegments++;
     updateFruitCoordinates();
+    player3.start();
+    if (prevScore == 19) {
+      player.playbackRate = 1.02;
+    } else if (prevScore == 39) {
+      player.playbackRate = 1.04;
+    } else if (prevScore == 59) {
+      player.playbackRate = 1.08
+    } else if (prevScore == 79) {
+      player.playbackRate = 1.10
+    } else if (prevScore == 99) {
+      player.playbackRate == 1.12
+    }
   }
 }
+
+
 
 function updateFruitCoordinates() {
   /*
@@ -141,7 +155,6 @@ function updateFruitCoordinates() {
     in between 100 and width-100, and be rounded off to the nearest
     number divisible by 10, since I move the snake in multiples of 10.
   */
-
   xFruit = floor(random(10, (width - 100) / 10)) * 10;
   yFruit = floor(random(10, (height - 100) / 10)) * 10;
   stroke(255);
@@ -193,4 +206,9 @@ var player = new Tone.Player({
   "volume" : -6,
   'loop' : true,
   'fadeout' : 1,
+}).toMaster();
+
+var player3 = new Tone.Player({
+  "url" : "sounds/Bite.wav",
+  "volume" : 6,
 }).toMaster();
