@@ -95,6 +95,12 @@ function checkGameStatus() {
     noLoop();
     var scoreVal = parseInt(scoreElem.html().substring(8));
     scoreElem.html('Game ended! Your score was : ' + scoreVal);
+    var player2 = new Tone.Player({
+    	"url" : "sounds/GameOver.mp3",
+    	"autostart" : true,
+      "volume" : -6,
+    }).toMaster();
+    player.stop();
   }
 }
 
@@ -168,3 +174,23 @@ function keyPressed() {
       break;
   }
 }
+
+
+// var player = new Tone.Player('sounds/loop.mp3', function() {
+//   document.addEventListener("load", playFile);
+//   player.volume(-20);
+//   console.log('test');
+// }).toMaster();
+//
+// function playFile() {
+// console.log('playfile');
+// player.autostart = true;
+// }
+
+var player = new Tone.Player({
+	"url" : "sounds/loop.mp3",
+	"autostart" : true,
+  "volume" : -6,
+  'loop' : true,
+  'fadeout' : 1,
+}).toMaster();
